@@ -1,4 +1,4 @@
-# Android Project 3 - *FlixterPlus+App*
+# Android Project 3 - **FlixterPlus**
 
 Submitted by: **Matea Milloshi**
 
