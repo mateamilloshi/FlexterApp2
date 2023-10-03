@@ -1,6 +1,6 @@
 # Android Project 3 - *FlixterPlus+App*
 
-Submitted by: **Matea Milloshi*
+Submitted by: **Matea Milloshi**
 
 **FlixterPlus** is a movie browsing app that allows users to browse movies currently playing in theaters.
 
