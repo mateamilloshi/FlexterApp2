@@ -9,47 +9,45 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.bestsellerlistapp.R.id
 import com.google.gson.Gson
+import com.codepath.bestsellerlistapp.Person
+import com.codepath.bestsellerlistapp.R
 
-class MovieAdapter(
-    private val movies: List<Movie>,
+class PeopleAdapter(
+    private val people: List<Person>,
     private val mListener: OnListFragmentInteractionListener?
-) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+) : RecyclerView.Adapter<PeopleAdapter.PersonViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_item_layout, parent, false)
-        return MovieViewHolder(view)
+        return PersonViewHolder(view)
     }
 
-    inner class MovieViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mItem: Movie? = null
-        val mMovieName: TextView = mView.findViewById(R.id.movie_name)
-        val mMovieTitle: TextView = mView.findViewById(R.id.movie_title)
-        val mMovieDescription: TextView = mView.findViewById(R.id.movie_description)
-        val mMoviePoster: ImageView = mView.findViewById(R.id.movie_poster)
+    inner class PersonViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+        val mPersonName: TextView = mView.findViewById(R.id.person_name)
+        val mPersonProfile: ImageView = mView.findViewById(R.id.person_profile)
 
-        fun bind(movie: Movie) {
-            mMovieName.text = movie.name.toString()
-            mMovieTitle.text = movie.title
-            mMovieDescription.text = movie.description
-            mMovieTitle.visibility = View.GONE
+
+        fun bind(person: Person) {
+            mPersonName.text = person.name
+
             Glide.with(itemView.context)
-                .load(movie.posterUrl)
-                .into(mMoviePoster)
+                .load(person.profilePath)
+                .into(mPersonProfile)
 
             mView.setOnClickListener {
-                mListener?.onItemClick(movie)
+                mListener?.onItemClick(person)
             }
         }
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movies[position]
+    override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
+        val movie = people[position]
         holder.bind(movie)
     }
 
     override fun getItemCount(): Int {
-        return movies.size
+        return people.size
     }
 }
 
